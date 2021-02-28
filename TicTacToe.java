@@ -40,6 +40,31 @@ public class TicTacToe {
 		return ComputerLetter;
 	}
 	
+
+	
+	public static void makePlayerMove(){
+
+	System.out.println("Enter the position you want to move to : "
+        					+ "\nPosition must be betwween 1 to 9");
+        int position = sc.nextInt();
+
+        if(position >= 1 && position <= 9 && board[position] == 0) {
+        	board[position] = PlayerLetter.charAt(0);
+        }
+        else if (position >= 1 && position <= 9 && board[position] != 0){
+        	System.out.println("Position is taken. \n Enter again");
+        	position = sc.nextInt();
+        	if(position >= 1 && position <= 9 && board[position] == 0)
+        		board[position] = PlayerLetter.charAt(0);
+        }
+        else {
+        	System.out.println("Invalid Position.");
+        }
+        	
+        showBoard();
+	}
+
+
 	public static void main(String[] args) {
 		System.out.println("Welocme to Tic-Tac-Toe program");
 		board = new char[10];
@@ -50,7 +75,7 @@ public class TicTacToe {
 		System.out.println("Player is : " + PlayerLetter);
 		System.out.println("Computer is : " + ComputerLetter);
 		showBoard();
-	
+		
 		
 	}
 }
