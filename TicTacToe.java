@@ -100,6 +100,17 @@ public class TicTacToe {
 		
 	}
 
+        public static void PlayAgain(){
+        
+        System.out.println("Nice game ! you wnt play again....y/n");
+        String option = sc.next().toUpperCase();
+        if (option.equals("y")){
+            Toss();
+        }
+        else 
+            System.out.println("Thank you");
+        }
+
 	public static void main(String[] args) {
 		System.out.println("Welocme to Tic-Tac-Toe program");
 		board = new char[10];
