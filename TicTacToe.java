@@ -64,6 +64,24 @@ public class TicTacToe {
         showBoard();
 	}
 	
+	public static void makeComputerMove() {
+		int cposition = (int)Math.floor(Math.random() * (10-1))+1;
+		
+		if(board[cposition] == 0 ) {
+			System.out.println("Computer will put " + ComputerLetter.charAt(0) + " at position : " + cposition);
+			board[cposition] = ComputerLetter.charAt(0);
+		}
+		else if(board[cposition] != 0){
+			cposition = (int)Math.floor(Math.random() * (10-1))+1;
+			if(board[cposition] == 0 ) {
+				System.out.println("Computer will put " + ComputerLetter.charAt(0) + " at position : " + cposition);
+				board[cposition] = ComputerLetter.charAt(0);
+			}
+		}
+		
+		showBoard();
+	}
+	
 	public static void Toss() {
 		System.out.println("Lets Toss! \nEnter 1 for Heads and 2 for Tails");
 		int opt = sc.nextInt();
