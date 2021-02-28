@@ -63,7 +63,24 @@ public class TicTacToe {
         	
         showBoard();
 	}
-
+	
+	public static void Toss() {
+		System.out.println("Lets Toss! \nEnter 1 for Heads and 2 for Tails");
+		int opt = sc.nextInt();
+		int toss = (int)Math.floor(Math.random() * 10) %2;
+		
+		if(opt == toss) {
+			System.out.println("Player won the toss! So player starts the game.");
+			makePlayerMove();
+			makeComputerMove();
+		}
+		else {
+			System.out.println("Computer won the toss! So computer starts the game.");
+			makeComputerMove();
+			makePlayerMove();
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		System.out.println("Welocme to Tic-Tac-Toe program");
@@ -75,6 +92,7 @@ public class TicTacToe {
 		System.out.println("Player is : " + PlayerLetter);
 		System.out.println("Computer is : " + ComputerLetter);
 		showBoard();
+		Toss();
 		
 		
 	}
