@@ -200,6 +200,53 @@ public static char winCheck()
 		}
 	}
 
+        public static void makeComputerMove() {
+		if(computerWinning()) {
+		}
+	}
+	
+	public static boolean con(char letter) {
+		for(int index = 0; index < checkCondition.size(); index++) {
+			int sum = 0;
+			for(int j = 0; j < checkCondition.get(index).length; j++) {
+				if(board[checkCondition.get(index)[j]] == letter) {
+					sum = sum + 1;
+					if (sum == 2) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static boolean computerWinning() {
+		if(con(ComputerLetter)) {
+			for (int l = 0; l < checkCondition.get(index).length; l++) {
+				if(board[checkCondition.get(index)[1]] == ' ') {
+					board[checkCondition.get(index)[1]] = ComputerLetter;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static boolean block() {
+
+		if (con(PlayerLetter)) {
+			for (int l = 0; l < checkCondition.get(index).length; l++) {
+				if (board[checkCondition.get(index)[l]] == ' ') {
+					board[checkCondition.get(index)[l]] = ComputerLetter;
+						checkCondition.remove(index);
+							return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+
         public static void PlayAgain(){
         
         System.out.println("Nice game ! you wnt play again....y/n");
