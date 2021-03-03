@@ -91,23 +91,29 @@ public class TicTacToe {
         showBoard();
 	}
 	
-	public static void makeComputerMove() {
-		int cposition = (int)Math.floor(Math.random() * (10-1))+1;
-		
-		if(board[cposition] == 0 ) {
-			System.out.println("Computer will put " + ComputerLetter.charAt(0) + " at position : " + cposition);
-			board[cposition] = ComputerLetter.charAt(0);
-		}
-		else if(board[cposition] != 0){
-			cposition = (int)Math.floor(Math.random() * (10-1))+1;
-			if(board[cposition] == 0 ) {
-				System.out.println("Computer will put " + ComputerLetter.charAt(0) + " at position : " + cposition);
-				board[cposition] = ComputerLetter.charAt(0);
-			}
-		}
-		
-		showBoard();
+	public static void computerMove() {
+		int[] corner = {1, 3, 7, 9};
+
+			boolean check = true;
+				for (int l=0; l<corner.length; l++) {
+					if(board[corner[l]] == ' ') {
+						board[corner[l]] = ComputerLetter;
+						check = false;
+						break;
+					}
+				}
 	}
+	
+	public static void makeComputerMove() {
+		if (computerWinning()) {
+		}
+		else if(block()) {
+		}
+		else{
+			computerMove();
+		}
+	}
+
 	
 	public static void Toss() {
 		System.out.println("Lets Toss! \nEnter 1 for Heads and 2 for Tails");
@@ -199,6 +205,53 @@ public static char winCheck()
 			}
 		}
 	}
+
+        public static void makeComputerMove() {
+		if(computerWinning()) {
+		}
+	}
+	
+	public static boolean con(char letter) {
+		for(int index = 0; index < checkCondition.size(); index++) {
+			int sum = 0;
+			for(int j = 0; j < checkCondition.get(index).length; j++) {
+				if(board[checkCondition.get(index)[j]] == letter) {
+					sum = sum + 1;
+					if (sum == 2) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static boolean computerWinning() {
+		if(con(ComputerLetter)) {
+			for (int l = 0; l < checkCondition.get(index).length; l++) {
+				if(board[checkCondition.get(index)[1]] == ' ') {
+					board[checkCondition.get(index)[1]] = ComputerLetter;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static boolean block() {
+
+		if (con(PlayerLetter)) {
+			for (int l = 0; l < checkCondition.get(index).length; l++) {
+				if (board[checkCondition.get(index)[l]] == ' ') {
+					board[checkCondition.get(index)[l]] = ComputerLetter;
+						checkCondition.remove(index);
+							return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 
         public static void PlayAgain(){
         
