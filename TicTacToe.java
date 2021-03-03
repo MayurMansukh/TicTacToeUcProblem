@@ -294,18 +294,36 @@ public static char winCheck()
             System.out.println("Thank you");
         }
 
+	public static void execute() {
+		String check = "YES";
+		while(check.equals("YES")) {
+			TicTacToe ticTacToeGame = new TicTacToe();
+			conditionForWin();
+			ticTacToeGame.createBoard();
+			choose();
+			System.out.println("Player Letter : " + PlayerLetter);
+			System.out.println("Computer Letter: " + ComputerLetter);
+			showBoard();
+			Toss();
+			turn();
+			System.out.println("You Want To Play Again?? Please enter Yes or No.");
+			check = sc.next().toUpperCase();
+		}
+		System.out.println("OK Thanks For Playing");
+	}
+
+	
 	public static void main(String[] args) {
 		System.out.println("Welocme to Tic-Tac-Toe program");
-		board = new char[10];
-		System.out.println("Please Choose X or O");
-		String option = sc.next().toUpperCase();		
-		
-		choose(option);
-		System.out.println("Player is : " + PlayerLetter);
-		System.out.println("Computer is : " + ComputerLetter);
-		showBoard();
-		Toss();
-		turn();
-		
+	
+		try {
+			System.out.println("Welcome to TicTacToeGame");
+			execute();
+		}
+		catch(Exception e) {
+			System.out.println("Invalid Inputs Play Again");
+			execute();		
+		}
 	}
+}
 }
